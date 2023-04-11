@@ -16,7 +16,11 @@ func main() {
   r.GET("/user/:id", uc.GetUser)
   r.POST("/user", uc.CreateUser)
   r.DELETE("/user/:id", uc.DeleteUser)
-  http.ListenAndServe("localhost:8080", r)
+  err := http.ListenAndServe("localhost:8080", r)
+  if err != nil {
+    fmt.Println("Failed to start server:", err)
+    os.Exit(1)
+  }
   
 }
 

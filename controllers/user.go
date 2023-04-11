@@ -50,7 +50,7 @@ func (uc UserController) CreateUser(w http.ResponseWriter, r *http.Request, _ ht
 
   json.NewDecoder(r.Body).Decode(&u)
 
-  u.Id = bson.NewObjectId()
+  u.ID = bson.NewObjectId()
 
   uc.session.DB("mongo-golang").C("users").Insert(u)
 
